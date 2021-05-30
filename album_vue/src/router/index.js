@@ -5,6 +5,9 @@ import Home from '../views/Home.vue'
 
 // import SignUp from '../views/SignUp.vue'
 import LogIn from '../views/LogIn.vue'
+import Posts from '../views/Posts.vue'
+import Post from '../views/Post.vue'
+import EditPost from '../views/EditPost.vue'
 
 const routes = [
   {
@@ -23,6 +26,30 @@ const routes = [
     component: LogIn
   },
   {
+    path: '/posts',
+    name: 'Posts',
+    component: Posts,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/posts/:id',
+    name: 'Post',
+    component: Post,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/posts/:id/edit',
+    name: 'EditPost',
+    component: EditPost,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -35,6 +62,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin) && !store.state.isAuthenticated) {
+    next({ name: 'LogIn', query: { to: to.path } })
+  } else {
+    next()
+  }
 })
 
 export default router

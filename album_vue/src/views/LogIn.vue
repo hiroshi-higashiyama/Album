@@ -55,6 +55,9 @@ export default {
       errors: [],
     };
   },
+  mounted() {
+    document.title = "Login";
+  },
   methods: {
     async submitForm() {
       this.$store.commit("setIsLoading", true);
@@ -94,7 +97,7 @@ export default {
           localStorage.setItem("username", response.data.username);
           localStorage.setItem("userid", response.data.id);
 
-          this.$router.push("/");
+          this.$router.push("/posts");
         })
         .catch((error) => {
           console.log(error);
