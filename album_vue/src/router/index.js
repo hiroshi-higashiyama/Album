@@ -7,6 +7,7 @@ import Home from '../views/Home.vue'
 import LogIn from '../views/LogIn.vue'
 import Posts from '../views/Posts.vue'
 import Post from '../views/Post.vue'
+import AddPost from '../views/AddPost.vue'
 import EditPost from '../views/EditPost.vue'
 
 const routes = [
@@ -37,6 +38,14 @@ const routes = [
     path: '/posts/:id',
     name: 'Post',
     component: Post,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/posts/add',
+    name: 'AddPost',
+    component: AddPost,
     meta: {
       requireLogin: true
     }

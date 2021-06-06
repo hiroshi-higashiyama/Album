@@ -12,7 +12,12 @@
           <template v-if="$store.state.isAuthenticated">
             <div class="navbar-item">
               <div class="buttons">
-                <button @click="logout()" class="button is-danger">ログアウト</button>
+                <router-link to="/posts/add" class="button is-success"
+                  >追加</router-link
+                >
+                <button @click="logout()" class="button is-danger">
+                  ログアウト
+                </button>
               </div>
             </div>
           </template>
