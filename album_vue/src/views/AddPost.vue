@@ -48,39 +48,36 @@ export default {
   name: "AddPost",
   data() {
     return {
-      submittedArticle: {
-        title: "",
-        description: "",
-        image: null
-      },
+      title: "",
+      description: "",
+      image: null,
     };
   },
   methods: {
     onImageUploaded(e) {
       // event(=e)から画像データを取得する
-      const image = e.target.files[0]
-      this.createImage(image)
+      const image = e.target.files[0];
+      this.createImage(image);
     },
     createImage(image) {
-      const reader = new FileReader()
-      // imageをreaderにDataURLとしてattachする
-      reader.readAsDataURL(image)
-      // readAdDataURLが完了したあと実行される処理
-      reader.onload = () => {
-        this.image = reader.result
-      }
+      let formdata = new FormData();
+      formdata.append("image", image);
     },
-    async submitForm() {
+    submitForm() {
       this.$store.commit("setIsLoading", true);
 
       const post = {
         title: this.title,
         description: this.description,
         image: this.image,
-      }
+      };
 
-      await axios
-        .post("/api/v1/posts/", post)
+      axios
+        .post("/api/v1/posts/", formdata, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
         .then((response) => {
           toast({
             message: "追加しました",
@@ -94,13 +91,12 @@ export default {
           this.$router.push("/posts");
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
 
       this.$store.commit("setIsLoading", false);
-    }
-  }
-}
+    },
+  },
+};
 </script>
-<style>
-</style>
+<style></style>
