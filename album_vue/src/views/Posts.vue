@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="columns is-multiline">
     <ThumbnailBox
       v-for="thumbnail in latestThumbnails"
       v-bind:key="thumbnail.id"

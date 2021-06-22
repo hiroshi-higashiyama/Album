@@ -10,13 +10,13 @@ class PostSerializer(serializers.ModelSerializer):
             "created_by",
             "created_at",
             "updated_at",
-            "get_image",
-            "get_thumbnail",
         ),
         fields = (
             "id",
             "title",
             "description",
             "image",
+            "get_image",
+            "get_thumbnail",
 
         )

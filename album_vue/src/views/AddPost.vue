@@ -10,7 +10,7 @@
           <div class="field">
             <label>Image</label>
             <div class="control">
-              <input type="file" @change="onImageUploaded" name="file" />
+              <input type="file" @change="getFile($event)" name="file" />
             </div>
           </div>
 
@@ -48,59 +48,49 @@ export default {
   name: "AddPost",
   data() {
     return {
-      submittedArticle: {
-        title: "",
-        description: "",
-        image: null
-      },
+      title: "",
+      description: "",
+      image: null,
     };
   },
   methods: {
-    onImageUploaded(e) {
-      // event(=e)から画像データを取得する
-      const image = e.target.files[0]
-      this.createImage(image)
-    },
-    createImage(image) {
-      const reader = new FileReader()
-      // imageをreaderにDataURLとしてattachする
-      reader.readAsDataURL(image)
-      // readAdDataURLが完了したあと実行される処理
-      reader.onload = () => {
-        this.image = reader.result
-      }
+    getFile(event) {
+      const file = event.target.files[0];
+      this.image = file;
     },
     async submitForm() {
       this.$store.commit("setIsLoading", true);
 
-      const post = {
-        title: this.title,
-        description: this.description,
-        image: this.image,
-      }
+      const formData = new FormData();
+      formData.append("title", this.title);
+      formData.append("description", this.description);
+      formData.append("image", this.image);
 
       await axios
-        .post("/api/v1/posts/", post)
+        .post("/api/v1/posts/", formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
         .then((response) => {
           toast({
             message: "追加しました",
             type: "is-success",
             dismissible: true,
             pauseOnHover: true,
-            duration: 2000,
+            duration: 3000,
             position: "bottom-right",
           });
 
           this.$router.push("/posts");
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
 
       this.$store.commit("setIsLoading", false);
-    }
-  }
-}
+    },
+  },
+};
 </script>
-<style>
-</style>
+<style></style>
