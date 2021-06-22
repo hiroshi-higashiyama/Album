@@ -116,7 +116,7 @@ export default {
   border-radius: 50%;
   border: 6px solid #ccc;
   border-color: #ccc transparent #ccc transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  animation: lds-dual-ring 1.8s linear infinite;
 }
 
 @keyframes lds-dual-ring {
