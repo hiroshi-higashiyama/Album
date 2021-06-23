@@ -41,7 +41,6 @@
 
 <script>
 import axios from "axios";
-
 import { toast } from "bulma-toast";
 
 export default {
