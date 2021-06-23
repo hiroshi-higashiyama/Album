@@ -2,7 +2,7 @@
   <div id="wrapper">
     <nav class="navbar is-dark">
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item"
+        <router-link to="/posts" class="navbar-item"
           ><strong>タイトル</strong></router-link
         >
       </div>
