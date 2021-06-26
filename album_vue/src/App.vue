@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" v-cloak>
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link to="/posts" class="navbar-item"
@@ -100,6 +100,10 @@ export default {
 
 <style lang="scss">
 @import "../node_modules/bulma";
+
+[v-cloak] {
+  display: none;
+}
 
 .lds-dual-ring {
   display: inline-block;
