@@ -6,14 +6,13 @@
       </div>
 
       <div class="column is-12">
-        <form @submit.prevent="submitForm" enctype="multipart/form-data">
-          <div class="field">
-            <label>Image</label>
-            <div class="control">
-              <input type="file" @change="getFile($event)" name="file" />
-            </div>
-          </div>
+        <figure class="image mb-6">
+          <img v-bind:src="edit.get_image" />
+        </figure>
+      </div>
 
+      <div class="column is-12">
+        <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="field">
             <label>Title</label>
             <div class="control">
@@ -48,9 +47,9 @@ export default {
   data() {
     return {
       edit: {
-        title: '',
-        description: '',
-        image: '',
+        title: "",
+        description: "",
+        get_image: "",
       },
     };
   },
@@ -76,10 +75,6 @@ export default {
 
       this.$store.commit("setIsLoading", false);
     },
-    getFile(event) {
-      const file = event.target.files[0];
-      this.edit.image = file;
-    },
     async submitForm() {
       this.$store.commit("setIsLoading", true);
 
@@ -88,8 +83,8 @@ export default {
       const formData = new FormData();
       formData.append("title", this.edit.title);
       formData.append("description", this.edit.description);
-      formData.append("image", this.edit.image);
-      formData.append("thumbnail", '');
+      // formData.append("image", this.edit.image);
+      // formData.append("thumbnail", '');
 
       await axios
         .patch(`/api/v1/posts/${postID}/`, formData, {
