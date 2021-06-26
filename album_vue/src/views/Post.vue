@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     async getPost() {
-      this.$store.commit("setIsLoading", true);
+      // this.$store.commit("setIsLoading", true);
 
       const postID = this.$route.params.id;
 
@@ -54,7 +54,7 @@ export default {
           console.log(error);
         });
 
-      this.$store.commit("setIsLoading", false);
+      // this.$store.commit("setIsLoading", false);
     },
     async submitDelete() {
       this.$store.commit("setIsLoading", true);

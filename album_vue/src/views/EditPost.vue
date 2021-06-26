@@ -50,7 +50,7 @@ export default {
       edit: {
         title: '',
         description: '',
-        image: null
+        image: '',
       },
     };
   },

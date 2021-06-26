@@ -8,7 +8,6 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         read_only_fields = (
             "created_by",
-            "created_at",
             "updated_at",
         ),
         fields = (
@@ -19,5 +18,6 @@ class PostSerializer(serializers.ModelSerializer):
             "thumbnail",
             "get_image",
             "get_thumbnail",
+            "created_at",
 
         )
