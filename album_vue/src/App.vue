@@ -3,7 +3,7 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link to="/posts" class="navbar-item"
-          ><strong>タイトル</strong></router-link
+          ><strong>Title</strong></router-link
         >
       </div>
 
@@ -13,10 +13,10 @@
             <div class="navbar-item">
               <div class="buttons">
                 <router-link to="/posts/add" class="button is-success"
-                  >追加</router-link
+                  ><strong><i class="fas fa-plus-circle"></i></strong>&nbsp;Post</router-link
                 >
                 <button @click="logout()" class="button is-danger">
-                  ログアウト
+                  Logout
                 </button>
               </div>
             </div>
@@ -29,7 +29,7 @@
                   ><strong>サインアップ</strong></router-link
                 > -->
                 <router-link to="/log-in" class="button is-success"
-                  >ログイン</router-link
+                  >Login</router-link
                 >
               </div>
             </div>

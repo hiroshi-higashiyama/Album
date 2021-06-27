@@ -1,38 +1,41 @@
 <template>
-  <div class="container">
-    <div class="columns is-multiline">
+  <div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <div class="column is-12">
         <h1 class="title">Edit Post</h1>
       </div>
 
-      <div class="column is-12">
-        <figure class="image mb-6">
+      <div class="box">
+        <figure class="image mb-5">
           <img v-bind:src="edit.get_image" />
         </figure>
-      </div>
 
-      <div class="column is-12">
-        <form @submit.prevent="submitForm" enctype="multipart/form-data">
-          <div class="field">
-            <label>Title</label>
-            <div class="control">
-              <input type="text" class="input" v-model="edit.title" />
+        <div>
+          <form @submit.prevent="submitForm" enctype="multipart/form-data">
+            <div class="field">
+              <label>Title:</label>
+              <div class="control">
+                <input type="text" class="input" v-model="edit.title" />
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <label>Description</label>
-            <div class="control">
-              <textarea class="textarea" v-model="edit.description"></textarea>
+            <div class="field mt-5">
+              <label>Description:</label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  v-model="edit.description"
+                ></textarea>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-              <button class="button is-success">Submit</button>
+            <div class="field mt-5">
+              <div class="control">
+                <button class="button is-success">Submit</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -94,7 +97,7 @@ export default {
         })
         .then((response) => {
           toast({
-            message: "編集しました。",
+            message: "Edited.",
             type: "is-success",
             dismissible: true,
             pauseOnHover: true,

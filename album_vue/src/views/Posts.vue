@@ -6,7 +6,7 @@
           <input type="text" class="input" v-model="query" />
         </div>
         <div class="control">
-          <button class="button is-success">Search</button>
+          <button class="button is-success"><i class="fas fa-search"></i>&nbsp;Search</button>
         </div>
       </div>
     </form>

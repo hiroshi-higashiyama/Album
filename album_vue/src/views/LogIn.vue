@@ -1,31 +1,37 @@
 <template>
-  <div class="container">
-    <div class="columns">
-      <div class="column is-4 is-offset-4">
-        <h1 class="title">ログイン</h1>
+  <div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <h1 class="title">Login</h1>
 
+      <div class="box">
         <form @submit.prevent="submitForm">
           <div class="field">
-            <label>メールアドレス</label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 type="email"
                 name="email"
                 class="input"
+                placeholder="Email"
                 v-model="username"
               />
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
             </div>
           </div>
 
           <div class="field">
-            <label>パスワード</label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
                 type="password"
                 name="password"
                 class="input"
+                placeholder="Password"
                 v-model="password"
               />
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
             </div>
           </div>
 
@@ -33,9 +39,9 @@
             <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
           </div>
 
-          <div class="field">
+          <div class="field mt-5">
             <div class="control">
-              <button class="button is-success">送信</button>
+              <button class="button is-success">Login</button>
             </div>
           </div>
         </form>

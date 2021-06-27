@@ -1,34 +1,51 @@
 <template>
-  <div class="container">
-    <div class="columns is-multiline">
+  <div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <div class="column is-12">
         <h1 class="title">Add Post</h1>
       </div>
 
-      <div class="column is-12">
+      <div class="box">
         <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="field">
-            <label>Image</label>
-            <div class="control">
-              <input type="file" @change="getFile($event)" name="file" />
-            </div>
+           <div>Image:</div>
+            <label class="file-label"
+              >
+              <div class="control">
+                <input
+                  class="file-input"
+                  type="file"
+                  @change="getFile($event)"
+                  name="file"
+                />
+
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-file-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+              </div>
+              </label>
           </div>
 
-          <div class="field">
-            <label>Title</label>
+          <div class="field mt-5">
+            <label>Title:</label>
             <div class="control">
               <input type="text" class="input" v-model="title" />
             </div>
           </div>
 
-          <div class="field">
-            <label>Description</label>
+          <div class="field mt-5">
+            <label>Description:</label>
             <div class="control">
               <textarea class="textarea" v-model="description"></textarea>
             </div>
           </div>
 
-          <div class="field">
+          <div class="field mt-5">
             <div class="control">
               <button class="button is-success">Submit</button>
             </div>
@@ -73,7 +90,7 @@ export default {
         })
         .then((response) => {
           toast({
-            message: "追加しました",
+            message: "Posted.",
             type: "is-success",
             dismissible: true,
             pauseOnHover: true,
