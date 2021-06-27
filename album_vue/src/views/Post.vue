@@ -1,24 +1,25 @@
 <template>
-  <div class="container">
-    <div class="columns is-multiline">
-      <div class="column is-12">
-        <figure class="image mb-6">
+  <div class="columns">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <div class="box">
+        <figure class="image mb-4">
           <img v-bind:src="post.get_image" />
         </figure>
+        <div>
+          <p class="title is-4"><strong>Title: {{ post.title }}</strong></p>
+          <p>Created date: {{ post.created_at }}</p>
+          <p v-if="post.description">Description: {{ post.description }}</p>
+        </div>
 
-        <h1 class="title">{{ post.title }}</h1>
-        <p>{{ post.created_at }}</p>
-        <p>{{ post.description }}</p>
+        <div class="buttons mt-5">
+          <router-link
+            :to="{ name: 'EditPost', params: { id: post.id } }"
+            class="button is-success"
+            ><strong><i class="fas fa-edit"></i>&nbsp;Edit</strong></router-link
+          >
+          <button class="button is-danger" @click="submitDelete"><i class="fas fa-trash-alt">&nbsp;delete</i></button>
+        </div>
       </div>
-    </div>
-
-    <div class="buttons">
-      <router-link
-        :to="{ name: 'EditPost', params: { id: post.id } }"
-        class="button is-success"
-        ><strong>編集</strong></router-link
-      >
-      <button class="button is-danger" @click="submitDelete">削除</button>
     </div>
   </div>
 </template>
@@ -48,7 +49,7 @@ export default {
         .then((response) => {
           this.post = response.data;
 
-          document.title = this.post.title + ' | Detail'
+          document.title = this.post.title + " | Detail";
         })
         .catch((error) => {
           console.log(error);
@@ -65,7 +66,7 @@ export default {
         .delete(`/api/v1/posts/${postID}/`)
         .then((response) => {
           toast({
-            message: "削除しました",
+            message: "Deleted.",
             type: "is-success",
             dismissible: true,
             pauseOnHover: true,
