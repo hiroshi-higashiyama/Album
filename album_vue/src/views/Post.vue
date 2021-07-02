@@ -15,9 +15,9 @@
           <router-link
             :to="{ name: 'EditPost', params: { id: post.id } }"
             class="button is-success"
-            ><strong><i class="fas fa-edit"></i>&nbsp;Edit</strong></router-link
+            ><strong><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</strong></router-link
           >
-          <button class="button is-danger" @click="submitDelete"><i class="fas fa-trash-alt">&nbsp;delete</i></button>
+          <button class="button is-danger" @click="submitDelete"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;delete</button>
         </div>
       </div>
     </div>

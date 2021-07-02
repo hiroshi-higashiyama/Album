@@ -13,7 +13,7 @@
             <div class="navbar-item">
               <div class="buttons">
                 <router-link to="/posts/add" class="button is-success"
-                  ><strong><i class="fas fa-plus-circle"></i></strong>&nbsp;Post</router-link
+                  ><strong><i class="fas fa-plus-circle"></i></strong>&nbsp;&nbsp;Post</router-link
                 >
                 <button @click="logout()" class="button is-danger">
                   Logout
