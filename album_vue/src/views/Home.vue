@@ -3,12 +3,10 @@
     <div class="hero is-fullheight" style="background-image: url('StockSnap_RTUVC7BMZI.jpg')">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title mb-6">Welcome to Title</h1>
-          <h2 class="subtitle">The best image</h2>
+          <h1 class="home title mb-6">Welcome to Title</h1>
+          <h2 class="home subtitle">The best image</h2>
         </div>
       </div>
-
-      <!-- <img src="StockSnap_RTUVC7BMZI.jpg" alt="" /> -->
     </div>
   </div>
 </template>
@@ -24,5 +22,8 @@ export default {
   @extend .hero;
   background-size: cover;
   background-position: center;
+}
+.home {
+  color: white;
 }
 </style>

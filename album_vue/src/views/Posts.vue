@@ -3,7 +3,12 @@
     <form @submit.prevent="getLatestThumbnails">
       <div class="field has-addons mb-5">
         <div class="control">
-          <input type="text" class="input" placeholder="Search..." v-model="query" />
+          <input
+            type="text"
+            class="input"
+            placeholder="Search..."
+            v-model="query"
+          />
         </div>
         <div class="control">
           <button class="button is-success">
@@ -99,8 +104,11 @@ export default {
           if (response.data.next) {
             this.hasNext = true;
           }
-          this.latestThumbnails = response.data.results;
-
+          for (let i = 0; i < response.data.results.length; i++) {
+            this.latestThumbnails.push(response.data.results[i]);
+          }
+          
+          // this.latestThumbnails = response.data.results;
           // if (response.data.next) {
           //   this.showNextButton = true;
           // }
