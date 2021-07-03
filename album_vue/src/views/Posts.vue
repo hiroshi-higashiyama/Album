@@ -3,10 +3,17 @@
     <form @submit.prevent="getLatestThumbnails">
       <div class="field has-addons mb-5">
         <div class="control">
-          <input type="text" class="input" v-model="query" />
+          <input
+            type="text"
+            class="input"
+            placeholder="Search..."
+            v-model="query"
+          />
         </div>
         <div class="control">
-          <button class="button is-success"><i class="fas fa-search"></i>&nbsp;Search</button>
+          <button class="button is-success">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </div>
     </form>
@@ -19,7 +26,7 @@
       </ThumbnailBox>
     </div>
 
-    <div class="buttons">
+    <!-- <div class="buttons">
       <button
         class="button is-light"
         @click="goToPreviousPage()"
@@ -34,7 +41,7 @@
       >
         Next
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,8 +56,9 @@ export default {
     return {
       latestThumbnails: [],
       query: "",
-      showNextButton: false,
-      showPreviousButton: false,
+      // showNextButton: false,
+      // showPreviousButton: false,
+      hasNext: true,
       currentPage: 1,
     };
   },
@@ -60,34 +68,53 @@ export default {
   mounted() {
     this.getLatestThumbnails();
 
+    window.onscroll = () => {
+      let bottomOfWindow =
+        document.documentElement.scrollTop + window.innerHeight ===
+        document.documentElement.offsetHeight;
+
+      if (bottomOfWindow && this.hasNext) {
+        this.currentPage += 1;
+        this.getLatestThumbnails();
+      }
+    };
+
     document.title = "Posts";
   },
   methods: {
-    goToNextPage() {
-      this.currentPage += 1;
-      this.getLatestThumbnails();
-    },
-    goToPreviousPage() {
-      this.currentPage -= 1;
-      this.getLatestThumbnails();
-    },
+    // goToNextPage() {
+    //   this.currentPage += 1;
+    //   this.getLatestThumbnails();
+    // },
+    // goToPreviousPage() {
+    //   this.currentPage -= 1;
+    //   this.getLatestThumbnails();
+    // },
     async getLatestThumbnails() {
       this.$store.commit("setIsLoading", true);
 
-      this.showNextButton = false;
-      this.showPreviousButton = false;
+      // this.showNextButton = false;
+      // this.showPreviousButton = false;
 
       await axios
         .get(`/api/v1/posts/?page=${this.currentPage}&search=${this.query}`)
         .then((response) => {
-          this.latestThumbnails = response.data.results;
+          this.hasNext = false;
 
           if (response.data.next) {
-            this.showNextButton = true;
+            this.hasNext = true;
           }
-          if (response.data.previous) {
-            this.showPreviousButton = true;
+          for (let i = 0; i < response.data.results.length; i++) {
+            this.latestThumbnails.push(response.data.results[i]);
           }
+          
+          // this.latestThumbnails = response.data.results;
+          // if (response.data.next) {
+          //   this.showNextButton = true;
+          // }
+          // if (response.data.previous) {
+          //   this.showPreviousButton = true;
+          // }
         })
 
         .catch((error) => {

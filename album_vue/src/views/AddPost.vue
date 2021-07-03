@@ -8,9 +8,8 @@
       <div class="box">
         <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="field">
-           <div>Image:</div>
-            <label class="file-label"
-              >
+            <div>Image:</div>
+            <label class="file-label">
               <div class="control">
                 <input
                   class="file-input"
@@ -28,7 +27,11 @@
                   </span>
                 </span>
               </div>
-              </label>
+            </label>
+
+            <div class="mt-5" v-if="preview">
+              <img :src="preview" />
+            </div>
           </div>
 
           <div class="field mt-5">
@@ -67,12 +70,16 @@ export default {
       title: "",
       description: "",
       image: null,
+      preview: "",
     };
   },
   methods: {
     getFile(event) {
       const file = event.target.files[0];
       this.image = file;
+      if (this.image && this.image.type.match(/^image\/(png|jpeg)$/)) {
+        this.preview = URL.createObjectURL(this.image);
+      }
     },
     async submitForm() {
       this.$store.commit("setIsLoading", true);
