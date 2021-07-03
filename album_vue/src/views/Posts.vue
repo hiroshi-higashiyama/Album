@@ -3,11 +3,11 @@
     <form @submit.prevent="getLatestThumbnails">
       <div class="field has-addons mb-5">
         <div class="control">
-          <input type="text" class="input" v-model="query" />
+          <input type="text" class="input" placeholder="Search..." v-model="query" />
         </div>
         <div class="control">
           <button class="button is-success">
-            <i class="fas fa-search"></i>&nbsp;&nbsp;Search
+            <i class="fas fa-search"></i>
           </button>
         </div>
       </div>

@@ -6,9 +6,9 @@
           <img v-bind:src="post.get_image" />
         </figure>
         <div>
-          <p class="title is-4"><strong>Title: {{ post.title }}</strong></p>
-          <p>Created date: {{ post.created_at }}</p>
-          <p v-if="post.description">Description: {{ post.description }}</p>
+          <p class="title is-4"><strong>Title&nbsp;: &nbsp;{{ post.title }}</strong></p>
+          <p>Created date&nbsp;: &nbsp;&nbsp;{{ post.created_at }}</p>
+          <p v-if="post.description">Description&nbsp;: &nbsp;{{ post.description }}</p>
         </div>
 
         <div class="buttons mt-5">
