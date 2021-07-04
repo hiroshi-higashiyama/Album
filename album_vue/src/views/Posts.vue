@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="getLatestThumbnails">
+    <form @submit.prevent="getSearch">
       <div class="field has-addons mb-5">
         <div class="control">
           <input
@@ -107,7 +107,7 @@ export default {
           for (let i = 0; i < response.data.results.length; i++) {
             this.latestThumbnails.push(response.data.results[i]);
           }
-          
+
           // this.latestThumbnails = response.data.results;
           // if (response.data.next) {
           //   this.showNextButton = true;
@@ -121,6 +121,26 @@ export default {
           console.log(error);
         });
 
+      this.$store.commit("setIsLoading", false);
+    },
+    async getSearch() {
+      this.$store.commit("setIsLoading", true);
+      await axios
+        .get(`/api/v1/posts/?page=${this.currentPage}&search=${this.query}`)
+        .then((response) => {
+          this.latestThumbnails.splice(0, this.latestThumbnails.length);
+          this.hasNext = false;
+
+          if (response.data.next) {
+            this.hasNext = true;
+          }
+          for (let i = 0; i < response.data.results.length; i++) {
+            this.latestThumbnails.push(response.data.results[i]);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       this.$store.commit("setIsLoading", false);
     },
   },
