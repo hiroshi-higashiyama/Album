@@ -2,7 +2,7 @@
   <div id="wrapper" v-cloak>
     <nav class="navbar is-dark">
       <div class="navbar-brand">
-        <router-link to="/posts" class="navbar-item"
+        <router-link to="/" class="navbar-item"
           ><strong>Title</strong></router-link
         >
       </div>
