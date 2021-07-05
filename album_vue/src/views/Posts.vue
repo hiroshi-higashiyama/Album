@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list-page">
     <form @submit.prevent="getSearch">
       <div class="field has-addons mb-5">
         <div class="control">

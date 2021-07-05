@@ -1,50 +1,52 @@
 <template>
-  <div class="columns">
-    <div class="column is-three-fifths is-offset-one-fifth">
-      <h1 class="title">Login</h1>
+  <div class="login-page">
+    <div class="columns">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <h1 class="title">Login</h1>
 
-      <div class="box">
-        <form @submit.prevent="submitForm">
-          <div class="field">
-            <div class="control has-icons-left">
-              <input
-                type="email"
-                name="email"
-                class="input"
-                placeholder="Email"
-                v-model="username"
-              />
-              <span class="icon is-small is-left">
-                <i class="fa fa-envelope"></i>
-              </span>
+        <div class="box">
+          <form @submit.prevent="submitForm">
+            <div class="field">
+              <div class="control has-icons-left">
+                <input
+                  type="email"
+                  name="email"
+                  class="input"
+                  placeholder="Email"
+                  v-model="username"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control has-icons-left">
-              <input
-                type="password"
-                name="password"
-                class="input"
-                placeholder="Password"
-                v-model="password"
-              />
-              <span class="icon is-small is-left">
-                <i class="fa fa-lock"></i>
-              </span>
+            <div class="field">
+              <div class="control has-icons-left">
+                <input
+                  type="password"
+                  name="password"
+                  class="input"
+                  placeholder="Password"
+                  v-model="password"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div class="notification is-danger" v-if="errors.length">
-            <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
-          </div>
-
-          <div class="field mt-5">
-            <div class="control">
-              <button class="button is-success">Login</button>
+            <div class="notification is-danger" v-if="errors.length">
+              <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
             </div>
-          </div>
-        </form>
+
+            <div class="field mt-5">
+              <div class="control">
+                <button class="button is-success">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
