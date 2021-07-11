@@ -3,7 +3,7 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <router-link to="/" class="navbar-item"
-          ><strong>Title</strong></router-link
+          ><strong>Photo Storage</strong></router-link
         >
       </div>
 
