@@ -17,7 +17,7 @@
       <div class="column is-three-fifths is-offset-one-fifth">
         <div class="box">
           <figure class="image mb-4">
-            <img v-bind:src="post.get_image" />
+            <img v-bind:src="post.image" />
           </figure>
           <div>
             <p class="title is-4">

@@ -1,9 +1,9 @@
 <template>
   <div class="column is-3">
     <div class="box">
-      <figure class="image is-3by2 mb-4">
+      <figure class="image is-1by1 mb-4">
         <router-link :to="{ name: 'Post', params: { id: thumbnail.id } }">
-        <img v-bind:src="thumbnail.get_thumbnail" />
+        <img v-bind:src="thumbnail.image" />
         </router-link>
       </figure>
 
