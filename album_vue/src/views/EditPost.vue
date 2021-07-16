@@ -26,7 +26,7 @@
 
         <div class="box">
           <figure class="image mb-5">
-            <img v-bind:src="edit.get_image" />
+            <img v-bind:src="edit.image" />
           </figure>
 
           <div>

@@ -6,7 +6,7 @@ from .models import Post
 
 
 class PostPagination(PageNumberPagination):
-    page_size = 4
+    page_size = 8
 
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer

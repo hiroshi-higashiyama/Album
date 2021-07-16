@@ -15,9 +15,5 @@ class PostSerializer(serializers.ModelSerializer):
             "title",
             "description",
             "image",
-            "thumbnail",
-            "get_image",
-            "get_thumbnail",
             "created_at",
-
         )
