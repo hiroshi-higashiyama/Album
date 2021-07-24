@@ -4,9 +4,7 @@
       <ul>
         <li><router-link to="/posts">List</router-link></li>
         <li class="is-active">
-          <router-link
-            :to="{ name: 'AddPost' }"
-            aria-current="true"
+          <router-link :to="{ name: 'AddPost' }" aria-current="true"
             >Add</router-link
           >
         </li>
@@ -87,6 +85,9 @@ export default {
       image: null,
       preview: "",
     };
+  },
+  mounted() {
+    document.title = "Add Post";
   },
   methods: {
     getFile(event) {
