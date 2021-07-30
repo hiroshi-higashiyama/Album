@@ -4,6 +4,7 @@ from rest_framework.pagination import PageNumberPagination
 from .serializers import PostSerializer
 from .models import Post
 
+from django.views.generic import TemplateView
 
 class PostPagination(PageNumberPagination):
     page_size = 8
@@ -17,3 +18,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+
+class CustomView(TemplateView):
+    template_name = "index.html"
